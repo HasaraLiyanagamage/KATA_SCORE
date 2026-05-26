@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>KATA Score</title>
+
+    <link rel="stylesheet"
+    href="{{ url_for('static',filename='style.css')}}">
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>KATA SCORE</h1>
+
+<div class="score-box">
+
+{% for score in scores %}
+<div class="score">
+{{score}}
+</div>
+{% endfor %}
+
+{% for i in range(5-scores|length) %}
+<div class="score">
+-
+</div>
+{% endfor %}
+
+</div>
+
+
+<form method="POST">
+
+<input
+type="number"
+name="score"
+step="0.1"
+min="0"
+max="10"
+placeholder="Enter score"
+required>
+
+<button type="submit">
+ADD SCORE
+</button>
+
+</form>
+
+
+<form method="POST">
+
+<button
+class="reset"
+name="reset">
+
+RESET
+
+</button>
+
+</form>
+
+
+{% if total != none %}
+
+<div class="total">
+
+TOTAL :
+{{total}}
+
+</div>
+
+{% endif %}
+
+</div>
+
+</body>
+</html>
